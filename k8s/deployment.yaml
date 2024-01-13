@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bnnsaone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bnnsaone
+  template:
+    metadata:
+      labels:
+        app: bnnsaone
+    spec:
+      containers:
+      - image: okteto.dev/bnnsaone:latest
+        name: bnnsaone
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "8c5b3fd8-3e0a-45c9-9a9d-d3d22e864cec"
+        - name: Vless_Path
+          value: "/vless"
+        - name: Vmess_UUID
+          value: "8c5b3fd8-3e0a-45c9-9a9d-d3d22e864cec"
+        - name: Vmess_Path
+          value: "/vmess"
+        - name: Share_Path
+          value: "/v2link"
